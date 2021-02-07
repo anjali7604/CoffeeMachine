@@ -6,7 +6,7 @@ as argument when prompted for input
 
 SOME CONSIDERATIONS AND ASSUMPTIONS:
 
-Why am I using Threads if I am taking lock on inventory?
+1.) Why am I using Threads if I am taking lock on inventory?
 --The objective of taking lock on whole inventory is to avoid race conditions
 --We could have taken lock on just ingredients sepeartely, but in that case there are 2 scenorios:
   Case 1: Either it leads to deadlocks --Eg. Lets say my hot coffee needs hot water and hot milk
@@ -30,7 +30,7 @@ Since we take lock on whole inventory, does it mean we dont get faster and optim
      But the remaining work(like mixing and other process after getting all ingredients) can be done parallely,
      thus giving the benefits of threads
 
-Why use LOW(minimum indicator) value common for all ingredients?
+2.) Why use LOW(minimum indicator) value common for all ingredients?
 -- We could have taken different LOW(minimum indicator) values for each ingredient 
     if the ingredient list has been fixed before, but in our case ingredients are variable 
     and comes as input in the json file
@@ -38,10 +38,5 @@ Why use LOW(minimum indicator) value common for all ingredients?
 
 
 
-
-
-
-LOW?
----why common assumption rather than ingredient dependent
 
 
